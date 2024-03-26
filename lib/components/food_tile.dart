@@ -5,7 +5,7 @@ import 'package:restaurant_app/models/food_model.dart';
 class FoodTile extends StatelessWidget {
   final FoodModel food;
   final void Function()? onTap;
-  const FoodTile({Key? key, required this.food, required this.onTap}) : super(key: key);
+  const FoodTile({super.key, required this.food, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +22,15 @@ class FoodTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            
-            Expanded(
-              child: Image.asset(
-                food.imagePath,
-              ),
+            Image.asset(
+              food.imagePath,
+              scale: 5,
             ),
             Text(
               food.name,
               style: GoogleFonts.dmSerifDisplay(
                   fontSize: 20, color: Colors.black.withOpacity(0.8)),
             ),
-            const SizedBox(height: 6,),
             SizedBox(
               width: 150,
               child: Row(
