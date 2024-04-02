@@ -50,9 +50,22 @@ class _MenuPageState extends State<MenuPage> {
 
   void navigateToFoodDetails(int index) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FoodDetails(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FoodDetails(
           food: foodMenu[index],
-        )));
+        ),
+      ),
+    );
+  }
+
+  IconData favIcon = Icons.favorite_outline;
+  void toggleFavoriteIcon() {
+    if (favIcon == Icons.favorite_outline) {
+      favIcon = Icons.favorite;
+    } else {
+      favIcon = Icons.favorite_outline;
+    }
   }
 
   @override
@@ -197,16 +210,25 @@ class _MenuPageState extends State<MenuPage> {
                     ),
                     Text(
                       '₹399.99',
-                      style: TextStyle(color: Colors.black.withOpacity(0.7),fontFamily: 'Poppins'),
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.7),
+                          fontFamily: 'Poppins'),
                     )
                   ],
                 ),
               ],
             ),
-            Icon(
-              Icons.favorite_outline,
-              color: Colors.red[300],
-              size: 28,
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  toggleFavoriteIcon();
+                });
+              },
+              child: Icon(
+                favIcon,
+                color: Colors.red[300],
+                size: 28,
+              ),
             )
           ]),
         )
