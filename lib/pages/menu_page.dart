@@ -58,14 +58,17 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
-
-  IconData favIcon = Icons.favorite_outline;
-  void toggleFavoriteIcon() {
-    if (favIcon == Icons.favorite_outline) {
-      favIcon = Icons.favorite;
-    } else {
-      favIcon = Icons.favorite_outline;
-    }
+  bool isFavorite = false;
+  // IconData favIcon = Icons.favorite_outline;
+  // void toggleFavoriteIcon() {
+  //   if (favIcon == Icons.favorite_outline) {
+  //     favIcon = Icons.favorite;
+  //   } else {
+  //     favIcon = Icons.favorite_outline;
+  //   }
+  // }
+  void toggleFavoriteIcon(){
+    isFavorite = !isFavorite;
   }
 
   @override
@@ -225,7 +228,7 @@ class _MenuPageState extends State<MenuPage> {
                 });
               },
               child: Icon(
-                favIcon,
+                isFavorite? Icons.favorite : Icons.favorite_outline,
                 color: Colors.red[300],
                 size: 28,
               ),
